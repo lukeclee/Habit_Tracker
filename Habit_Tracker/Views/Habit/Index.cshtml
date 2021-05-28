@@ -1,0 +1,73 @@
+﻿@model IEnumerable<Habit_Tracker.Models.Habit>
+
+@{
+    ViewData["Title"] = "Habit Tracker";
+}
+
+<div class="container p-3">
+    <div class="row pt-4">
+        <div class="col-6">
+            <h2 class="text-primary">Habit List</h2>
+        </div>
+        <div class="col-6 text-right">
+            <a asp-controller="Habit" asp-action="Create" class="btn btn-primary">
+                Add a New Habit
+            </a>
+        </div>
+    </div>
+
+    <br/><br/>
+
+    @if (Model.Count() > 0)
+    {
+        <table class="table table-bordered table-striped" style="width:100%">
+            <thead>
+                <tr>
+                    <th>
+                        Habit Name
+                    </th>
+                    <th>
+                        Weekly Goal
+                    </th>
+                    <th>
+                        Current Count
+                    </th>
+                    <th>
+                        Weekly Goal Met?
+                    </th>
+                    <th>
+                        Actions
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach(var obj in Model)
+                {
+                    <tr>
+                        <td width="40%">@obj.Name</td>
+                        <td width="15%">@obj.WeeklyGoal</td>
+                        <td width="15%">@obj.CurrentCount</td>
+                        <td width="10%">@obj.IsGoalMet</td>
+                        <td width ="20%" class="text-center">
+                            <div class="w-70 btn-group" role="group">
+                                <a asp-controller="Habit" asp-route-Id="@obj.Id" asp-action="Track" class="btn btn-primary mx-2">
+                                    Track
+                                </a>
+                                <a asp-controller="Habit" asp-route-Id="@obj.Id" asp-action="Edit" class="btn btn-success mx-2">
+                                    Edit
+                                </a>
+                                <a asp-controller="Habit" asp-route-Id="@obj.Id" asp-action="Delete" class="btn btn-danger mx-2">
+                                    Delete
+                                </a>
+                            </div>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+    else
+    {
+        <p>Currently not tracking any habits.</p>
+    }
+</div>
