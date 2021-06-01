@@ -1,8 +1,7 @@
 # Habit_Tracker
-Habit Tracking app I wrote using C# and ASP.NET MVC
+Habit Tracking app I wrote using C# and ASP.NET MVC to practice C# and learn MVC. 
 
 The habit tracker I built to simply keep track of the tasks that I want to do on a regular basis, like practice programming. 
-I built this to practice C# and learn MVC. 
 
 Clicking the habits tab at the top brings you to the table of habits that you want to keep track of using the app.
 
